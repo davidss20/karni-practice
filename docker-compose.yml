@@ -1,0 +1,15 @@
+name: karni
+
+services:
+  karni:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:8090:8080"
+    env_file:
+      - .env
+    volumes:
+      - karni-data:/data
+
+volumes:
+  karni-data:
